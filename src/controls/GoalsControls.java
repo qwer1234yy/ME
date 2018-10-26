@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import modals.Goal;
 @Controller
-@RequestMapping(value = "/goal")
+@RequestMapping(value = "/goal",produces = "application/json; charset=utf-8")
 public class GoalsControls {
 	  @RequestMapping(value = "/test")
 	  @ResponseBody
@@ -23,6 +23,13 @@ public class GoalsControls {
     	  System.out.println("test");
     	  return "test";
       }
+	  //produces = "application/json; charset=utf-8"
+	  @RequestMapping(value = "/code")
+	  @ResponseBody//乱码
+      public String testCoding(String username){
+    	  System.out.println("test+"+username);
+    	  return username;
+      }
 	  @RequestMapping(value = "/remove")
 	  //return "redirect:/login" 重定向 转发和重定向需要写全路径
       public String remove(boolean login){
@@ -31,7 +38,8 @@ public class GoalsControls {
     		  System.out.println("redirect:/goals/user/login");
 			return "redirect:/goals/user/login.jsp";
 		  }
-    	  System.out.println("test");
+    	  System.out.println("remove");
+    	  //remove function goes to here
     	  return "forward:/goals/admin/index.jsp";//转发
       }
 	  @RequestMapping(value = "/add")
