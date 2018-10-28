@@ -14,34 +14,38 @@
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-<!--         <property name="prefix" value="/goals/"></property> -->
-<!-- 		<property name="suffix" value=".jsp"></property> -->
+		<!-- <property name="prefix" value="/goals/"></property> -->
+		<!-- <property name="suffix" value=".jsp"></property> -->
 	</bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="104857600" />
+		<property name="maxInMemorySize" value="4096" />
+		<property name="defaultEncoding" value="UTF-8"></property>
+	</bean>
+	<!-- <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> -->
+	<!-- <property name="exceptionMappings"> -->
+	<!-- <props> -->
+	<!-- <prop key="springMVC.SpringException"> -->
+	<!-- ExceptionPage -->
+	<!-- </prop> -->
+	<!-- </props> -->
+	<!-- </property> -->
+	<!-- <property name="defaultErrorView" value="error" /> -->
+	<!-- </bean> -->
 
-<!-- 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> -->
-<!-- 		<property name="exceptionMappings"> -->
-<!-- 			<props> -->
-<!-- 				<prop key="springMVC.SpringException"> -->
-<!-- 					ExceptionPage -->
-<!-- 				</prop> -->
-<!-- 			</props> -->
-<!-- 		</property> -->
-<!-- 		<property name="defaultErrorView" value="error" /> -->
-<!-- 	</bean> -->
-
-<!-- 	<mvc:resources mapping="/pages/**" location="/WEB-INF/pages/" /> -->
-<!-- 	<mvc:resources mapping="/resources/**" location="/resources/" /> -->
+	<!-- <mvc:resources mapping="/pages/**" location="/WEB-INF/pages/" /> -->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<mvc:annotation-driven>
-        <mvc:message-converters>
-            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-                <property name="supportedMediaTypes">
-                    <list>
-                        <value>application/json;charset=UTF-8</value>
-                    </list>
-                </property>
-            </bean>
-        </mvc:message-converters>
-    </mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 
 </beans>

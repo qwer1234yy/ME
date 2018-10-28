@@ -94,4 +94,9 @@ public class User {
 		this.user_integral = user_integral;
 	}
 
+	@Override
+	public String toString() {
+		return "User [email=" + email + ", nickname=" + nickname + ", password=" + password + "]";
+	}
+
 }
